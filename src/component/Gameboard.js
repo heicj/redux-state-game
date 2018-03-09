@@ -1,38 +1,13 @@
 import React, { Component } from 'react';
 import './gameboard.css';
+import Square from './Square';
 
 export default class Gameboard extends Component{
   render(){
+    const squares = [1,2,3,4,5,6,7,8,9];
     return (
       <section id="gameboard"> 
-        <div>
-          one
-        </div>
-        <div>
-          two
-        </div>
-        <div>
-          three
-        </div>
-        <div>
-          four
-        </div>
-        <div>
-          five
-        </div>
-        <div>
-          six
-        </div>
-        <div>
-          seven
-        </div>
-        <div>
-          eight
-        </div>
-        <div>
-          nine
-        </div>
-
+        {squares.map(s => <Square key={s} id={s}/>)}
       </section>
     );
   }
