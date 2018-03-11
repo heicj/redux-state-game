@@ -26,3 +26,11 @@
 #gameboard > div:nth-child(7) {grid-area: '7';}
 #gameboard > div:nth-child(8) {grid-area: '8';}
 #gameboard > div:nth-child(9) {grid-area: '9';}
+
+div.red {
+  background: red;
+}
+
+div.black {
+  background: black;
+}

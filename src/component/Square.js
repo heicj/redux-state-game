@@ -5,6 +5,9 @@ export default class Square extends Component{
     const { id, onClick, value } = this.props;
     return (
       <div id={id} onClick={() => onClick(id)}>
+        {/* <div 
+          className={state[state.activePlayer].color}>
+        </div> */}
         {value}
       </div>
         

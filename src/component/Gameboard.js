@@ -19,8 +19,9 @@ class Gameboard extends Component{
     const { game } = this.props;
 
     return (
-      <section id="gameboard"> 
-        {game.gameBoard.map((s, i) => <Square value={s} key={i} id={i} onClick={this.handleClick}/>)}
+      <section id="gameboard">
+       
+        {game.gameBoard.map((s, i) => <Square value={s} state={game} key={i} id={i} onClick={this.handleClick}/>)}
       </section>
     );
   }

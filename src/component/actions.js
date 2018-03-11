@@ -1,16 +1,21 @@
-import { CHOICE_ADD } from './reducers';
+import { CHOICE_ADD, WIN_GAME } from './reducers';
 
 export function playerChoice(id){
   return (dispatch, getState) => {
 
     dispatch({
-    type: CHOICE_ADD,
-    payload: id
-  });
+      type: CHOICE_ADD,
+      payload: id
+    });
 
-  const { gameBoard } = getState().game;
-  const winner = checkWinner(gameBoard);
-  console.log(winner);
+    const { gameBoard } = getState().game;
+    const winner = checkWinner(gameBoard);
+    if(winner !== null) {
+      dispatch({
+        type: WIN_GAME,
+        payload: winner
+      });
+    }
   };
 }
 
