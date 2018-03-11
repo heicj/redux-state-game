@@ -1,10 +1,8 @@
 export const CHOICE_ADD = 'CHOICE_ADD';
 
-//const squares = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-
 export const initialState = {
-  gameBoard: Array(9).fill('open'),
-  //gameBoard: squares
+  gameBoard: Array(9).fill(''),
+  activePlayer: 'X'
 };
 
 export function game(state = initialState, { type, payload }){
@@ -12,11 +10,16 @@ export function game(state = initialState, { type, payload }){
     case 'CHOICE_ADD':{ 
 
       let newBoard = [...state.gameBoard];
-      newBoard[payload] = true;
+      const { activePlayer } = state;
+      const newPlayer = (activePlayer === 'X') ? 'O' : 'X'; 
+      newBoard[payload] = activePlayer;
+      
+      
 
       return {
         ...state,
-        newBoard
+        gameBoard: newBoard,
+        activePlayer: newPlayer
       };
     }  
     default:
