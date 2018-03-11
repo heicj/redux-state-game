@@ -1,14 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './gameboard.css';
+import { playerChoice } from './actions';
 import Square from './Square';
 
-export default class Gameboard extends Component{
+class Gameboard extends Component{
+
+  handleClick(target){
+    console.log(target);
+    playerChoice(target);
+  }
+
   render(){
-    const squares = [1,2,3,4,5,6,7,8,9];
+
+    const { game } = this.props;
+
     return (
       <section id="gameboard"> 
-        {squares.map(s => <Square key={s} id={s}/>)}
+        {game.gameBoard.map(s => <Square key={s} id={s} onClick={this.handleClick}/>)}
       </section>
     );
   }
 }
+
+export default connect(
+  (state) => ({ game: state.game }),
+  { playerChoice } 
+)(Gameboard);
