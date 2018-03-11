@@ -7,9 +7,11 @@ import Square from './Square';
 class Gameboard extends Component{
 
   handleClick = target => {
-    console.log(target);
-    const { playerChoice } = this.props;
-    playerChoice(target);
+    if(this.props.turns < 9){
+      console.log(target);
+      const { playerChoice } = this.props;
+      playerChoice(target);
+    }
   }
 
   render(){
@@ -25,6 +27,8 @@ class Gameboard extends Component{
 }
 
 export default connect(
-  state => ({ game: state.game }),
+  state => ({ 
+    game: state.game,
+    turns: state.game.turns }),
   { playerChoice } 
 )(Gameboard);
