@@ -6,8 +6,9 @@ import Square from './Square';
 
 class Gameboard extends Component{
 
-  handleClick(target){
+  handleClick = target => {
     console.log(target);
+    const { playerChoice } = this.props;
     playerChoice(target);
   }
 
@@ -17,13 +18,13 @@ class Gameboard extends Component{
 
     return (
       <section id="gameboard"> 
-        {game.gameBoard.map(s => <Square key={s} id={s} onClick={this.handleClick}/>)}
+        {game.gameBoard.map((s, i) => <Square value={s} key={i} id={i} onClick={this.handleClick}/>)}
       </section>
     );
   }
 }
 
 export default connect(
-  (state) => ({ game: state.game }),
+  state => ({ game: state.game }),
   { playerChoice } 
 )(Gameboard);
