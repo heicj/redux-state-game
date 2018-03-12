@@ -21,10 +21,11 @@ export function game(state = initialState, { type, payload }){
       let newBoard = [...state.gameBoard];
       const { activePlayer } = state;
       const newPlayer = (activePlayer === 'player1') ? 'player2' : 'player1'; 
-      newBoard[payload] = activePlayer;
-      
       let totalTurns = state.turns;
-      totalTurns++;
+      if(newBoard[payload] === ''){ 
+        newBoard[payload] = activePlayer;
+        totalTurns++;
+      } 
         
       return {
         ...state,
