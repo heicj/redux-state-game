@@ -16,12 +16,8 @@
   div {
     background-color: lightgrey;
     text-align: center;
-    font-size: 12rem;
-
-  };
-
-  div.red {
-    color:red
+    font-size: 11rem;
+    color: rgb(49, 57, 66);
   }
 }
 
@@ -29,14 +25,15 @@
   position: absolute;
   font-size: 10rem;
   color: white;
-  background-color: rgba(10,10,10,.8);
+  background-color: rgba(112, 128, 144, .8);
   width: 600px;
-  height: 480px;
+  height: 540px;
   text-align: center;
-  padding-top: 8rem;
+  padding-top: 4rem;
+  text-transform: uppercase;
 }
 #game {
-  margin: 0 auto;
+  margin: 3rem auto;
   width: 600px;
   height: 600px;
   position: relative;
