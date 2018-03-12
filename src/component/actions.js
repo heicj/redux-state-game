@@ -3,7 +3,7 @@ import { CHOICE_ADD, WIN_GAME } from './reducers';
 export function playerChoice(id){
   return (dispatch, getState) => {
     
-    const { gameBoard } = getState().game;
+    let { gameBoard } = getState().game;
     
     if(gameBoard[id] === ''){
       dispatch({
@@ -11,7 +11,7 @@ export function playerChoice(id){
         payload: id
       });
     }
-
+    gameBoard = getState().game.gameBoard;
     const winner = checkWinner(gameBoard);
     if(winner !== null) {
       dispatch({

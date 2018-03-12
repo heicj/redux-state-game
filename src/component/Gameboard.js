@@ -16,13 +16,16 @@ class Gameboard extends Component{
 
   render(){
 
-    const { game } = this.props;
+    const { game, winner } = this.props;
 
     return (
-      <section id="gameboard">
+      <div>
+        {winner ? <div>{winner}</div> : null}
+        <section id="gameboard">
        
-        {game.gameBoard.map((s, i) => <Square value={s} state={game} key={i} id={i} onClick={this.handleClick}/>)}
-      </section>
+          {game.gameBoard.map((s, i) => <Square value={s} state={game} key={i} id={i} onClick={this.handleClick}/>)}
+        </section>
+      </div>
     );
   }
 }
@@ -30,6 +33,7 @@ class Gameboard extends Component{
 export default connect(
   state => ({ 
     game: state.game,
-    turns: state.game.turns }),
+    turns: state.game.turns,
+    winner: state.game.winner }),
   { playerChoice } 
 )(Gameboard);
