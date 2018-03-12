@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import GameBoard from './Gameboard';
-import Player from './Player';
+import { connect } from 'react-redux';
+import { newGame } from './actions';
 
-export default class App extends Component{
+class App extends Component{
   render(){
+    const { newGame } = this.props;
     return (
       <div>
         <header> 
           <h1>Connect 3</h1>
-          <Player/><Player/>
+          <button onClick={newGame}> New Game </button>
         </header>
         <GameBoard/>
       </div>
     );
   }
 }
+
+export default connect(
+  null, 
+  { newGame }
+)(App);

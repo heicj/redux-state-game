@@ -1,4 +1,4 @@
-import { CHOICE_ADD, WIN_GAME } from './reducers';
+import { CHOICE_ADD, WIN_GAME, NEW_GAME } from './reducers';
 
 export function playerChoice(id){
   return (dispatch, getState) => {
@@ -19,6 +19,12 @@ export function playerChoice(id){
         payload: winner
       });
     }
+  };
+}
+
+export function newGame() {
+  return {
+    type: NEW_GAME
   };
 }
 

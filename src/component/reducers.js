@@ -1,5 +1,6 @@
 export const CHOICE_ADD = 'CHOICE_ADD';
 export const WIN_GAME = 'WIN_GAME';
+export const NEW_GAME = 'NEW_GAME';
 
 export const initialState = {
   gameBoard: Array(9).fill(''),
@@ -37,6 +38,10 @@ export function game(state = initialState, { type, payload }){
       return {
         ...state,
         winner: payload
+      };
+    case NEW_GAME:
+      return {
+        ...initialState
       };
     default:
       return state;
