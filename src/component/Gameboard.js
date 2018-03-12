@@ -12,15 +12,15 @@ class Gameboard extends Component{
       const { playerChoice } = this.props;
       playerChoice(target);
     }
-  }
+  };
 
   render(){
 
     const { game, winner } = this.props;
 
     return (
-      <div>
-        {winner ? <div>{winner}</div> : null}
+      <div id= "game">
+        {winner ? <div id= "winner">{winner} wins the game</div> : null}
         <section id="gameboard">
        
           {game.gameBoard.map((s, i) => <Square value={s} state={game} key={i} id={i} onClick={this.handleClick}/>)}

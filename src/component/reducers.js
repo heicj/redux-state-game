@@ -3,13 +3,13 @@ export const WIN_GAME = 'WIN_GAME';
 
 export const initialState = {
   gameBoard: Array(9).fill(''),
-  player1: {
+  X: {
     color: 'red'
   },
-  player2: {
+  O: {
     color: 'black'
   },
-  activePlayer: 'player1',
+  activePlayer: 'X',
   turns: 0,
   winner: ''
 };
@@ -20,7 +20,7 @@ export function game(state = initialState, { type, payload }){
 
       let newBoard = [...state.gameBoard];
       const { activePlayer } = state;
-      const newPlayer = (activePlayer === 'player1') ? 'player2' : 'player1'; 
+      const newPlayer = (activePlayer === 'X') ? 'O' : 'X'; 
       let totalTurns = state.turns;
       
       newBoard[payload] = activePlayer; 
