@@ -28,7 +28,7 @@ export function newGame() {
   };
 }
 
-function checkWinner(gameBoard) {
+export function checkWinner(gameBoard) {
   const winCombos = [
     [0, 1, 2],
     [3, 4, 5],

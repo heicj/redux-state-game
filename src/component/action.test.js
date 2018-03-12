@@ -1,5 +1,5 @@
-import { CHOICE_ADD } from './reducers';
-import { playerChoice } from './actions';
+import { CHOICE_ADD, WIN_GAME } from './reducers';
+import { playerChoice, checkWinner } from './actions';
 
 it('creates a choice action', () => {
   const index = 0;
@@ -19,3 +19,9 @@ it('creates a choice action', () => {
   expect(getState).toBeCalled();
 });
   
+it('checks for a winner', () => {
+
+  const result = checkWinner(['X', 'X', 'X', 'O', 'O', '', '', '', '']);
+
+  expect(result).toBe('X');
+});
