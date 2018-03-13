@@ -1,4 +1,4 @@
-import { game, CHOICE_ADD, WIN_GAME, NEW_GAME } from './reducers';
+import { game, players, ADD_WINNER, ADD_PLAYER, CHOICE_ADD, WIN_GAME, NEW_GAME } from './reducers';
 
 describe('reducer test', () => {
 
@@ -23,6 +23,25 @@ describe('reducer test', () => {
     const state = game(undefined, { type: WIN_GAME, payload: 'M' });
     expect(state.winner).toBe('M');
   });
+
+  it('players initializes as object with empty arrays', () => {
+    const state = players(undefined, {});
+    expect(state).toEqual({ players: [], winners: [] });
+  });
+
+  it('adds a winner', () => {
+    const state = players(undefined, { type: ADD_WINNER, payload: 'Charlie' });
+    expect(state).toEqual({ players: [], winners: ['Charlie'] });
+    const newWinner = players(state, { type: ADD_WINNER, payload: 'Ayden' });
+    expect(newWinner).toEqual({ players: [], winners: ['Charlie', 'Ayden'] });
+  });
+
+  it('adds player to players array', () => {
+    const state = players(undefined, { type: ADD_PLAYER, payload: 'Charlie' });
+    expect(state).toEqual({ players: ['Charlie'], winners: [] });
+  });
+
+  
 
 
 });

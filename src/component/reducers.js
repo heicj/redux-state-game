@@ -1,6 +1,8 @@
 export const CHOICE_ADD = 'CHOICE_ADD';
 export const WIN_GAME = 'WIN_GAME';
 export const NEW_GAME = 'NEW_GAME';
+export const ADD_WINNER = 'ADD_WINNER';
+export const ADD_PLAYER = 'ADD_PLAYER';
 
 export const initialState = {
   gameBoard: Array(9).fill(''),
@@ -43,6 +45,30 @@ export function game(state = initialState, { type, payload }){
       return {
         ...initialState
       };
+    default:
+      return state;
+  }
+}
+
+const initialPlayerState = {
+  players: [],
+  winners: []
+};
+
+export function players(state = initialPlayerState, { type, payload }){
+  switch(type){
+    case ADD_WINNER: 
+      return {
+        ...state,
+        winners: [...state.winners, payload]
+      };
+
+    case ADD_PLAYER:
+      return {
+        ...state,
+        players: [...state.players, payload]
+      };
+
     default:
       return state;
   }
