@@ -1,5 +1,5 @@
-import { CHOICE_ADD, WIN_GAME } from './reducers';
-import { playerChoice, checkWinner } from './actions';
+import { CHOICE_ADD, WIN_GAME, NEW_GAME } from './reducers';
+import { playerChoice, checkWinner, newGame } from './actions';
 
 it('creates a choice action', () => {
   const index = 0;
@@ -42,4 +42,11 @@ it('dispatches a winner', () => {
     payload: 'X'
   });
   expect(getState).toBeCalled();
+});
+
+it('creates a new game', () => {
+  const action = newGame();
+  expect(action).toEqual({
+    type: NEW_GAME,
+  });
 });
