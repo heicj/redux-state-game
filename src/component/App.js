@@ -6,7 +6,7 @@ import './App.css';
 
 class App extends Component{
   render(){
-    const { newGame, activePlayer } = this.props;
+    const { newGame, activePlayer, winner } = this.props;
     return (
       <div>
         <header id='header'> 
@@ -15,9 +15,11 @@ class App extends Component{
         </header>
         <GameBoard/>
         <section id="current">
-          <h1>
-            Current player: {activePlayer}
-          </h1>
+          { !winner ? 
+            <h1>Current player: {activePlayer}</h1> 
+            : 
+            null 
+          }
         </section>
       </div>
     );
@@ -26,6 +28,7 @@ class App extends Component{
 
 export default connect(
   state => ({
-    activePlayer: state.game.activePlayer }), 
+    activePlayer: state.game.activePlayer,
+    winner: state.game.winner }), 
   { newGame }
 )(App);
