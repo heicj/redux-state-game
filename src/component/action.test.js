@@ -22,6 +22,24 @@ it('creates a choice action', () => {
 it('checks for a winner', () => {
 
   const result = checkWinner(['X', 'X', 'X', 'O', 'O', '', '', '', '']);
+  expect(result).toBe('X');  
+});
 
-  expect(result).toBe('X');
+it('dispatches a winner', () => {
+  const index = 0;
+  const result = playerChoice(index);
+  const dispatch = jest.fn();
+  const getState = jest.fn(() => ({
+    game: {
+      gameBoard: ['X', 'X', 'X', '', '', '', '', '', ''],
+      winner: 'X'
+    }
+  }));
+  result(dispatch, getState);
+
+  expect(dispatch).toBeCalledWith({
+    type: 'WIN_GAME',
+    payload: 'X'
+  });
+  expect(getState).toBeCalled();
 });
