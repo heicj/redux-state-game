@@ -1,4 +1,4 @@
-import { CHOICE_ADD, WIN_GAME, NEW_GAME, ADD_PLAYER, ADD_PLAYERS } from './reducers';
+import { CHOICE_ADD, WIN_GAME, NEW_GAME, ADD_PLAYER, LOAD_PLAYERS } from './reducers';
 
 export function playerChoice(id){
   return (dispatch, getState) => {
