@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import store from '../store';
 
 export default class AddPlayerForm extends Component{
 

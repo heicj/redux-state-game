@@ -17,4 +17,9 @@ const store = createStore(
   )
 );
 
+window.onbeforeunload = () => {
+  const { players } = store.getState().players;
+  window.localStorage.players = JSON.stringify(players);
+};
+
 export default store;
