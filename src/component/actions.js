@@ -1,4 +1,4 @@
-import { CHOICE_ADD, WIN_GAME, NEW_GAME } from './reducers';
+import { CHOICE_ADD, WIN_GAME, NEW_GAME, ADD_PLAYER } from './reducers';
 
 export function playerChoice(id){
   return (dispatch, getState) => {
@@ -19,6 +19,13 @@ export function playerChoice(id){
         payload: winner
       });
     }
+  };
+}
+
+export function addPlayer(name){
+  return {
+    type: ADD_PLAYER,
+    payload: name
   };
 }
 
@@ -47,3 +54,4 @@ export function checkWinner(gameBoard) {
   }
   return null;
 }
+
