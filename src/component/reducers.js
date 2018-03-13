@@ -3,6 +3,7 @@ export const WIN_GAME = 'WIN_GAME';
 export const NEW_GAME = 'NEW_GAME';
 export const ADD_WINNER = 'ADD_WINNER';
 export const ADD_PLAYER = 'ADD_PLAYER';
+export const LOAD_PLAYERS = 'LOAD_PLAYERS';
 
 export const initialState = {
   gameBoard: Array(9).fill(''),
@@ -67,6 +68,12 @@ export function players(state = initialPlayerState, { type, payload }){
       return {
         ...state,
         players: [...state.players, payload]
+      };
+    
+    case LOAD_PLAYERS:
+      return {
+        ...state,
+        players: payload
       };
 
     default:

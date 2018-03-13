@@ -1,4 +1,4 @@
-import { CHOICE_ADD, WIN_GAME, NEW_GAME, ADD_PLAYER } from './reducers';
+import { CHOICE_ADD, WIN_GAME, NEW_GAME, ADD_PLAYER, ADD_PLAYERS } from './reducers';
 
 export function playerChoice(id){
   return (dispatch, getState) => {
@@ -26,6 +26,15 @@ export function addPlayer(name){
   return {
     type: ADD_PLAYER,
     payload: name
+  };
+}
+
+export function loadPlayers() {
+  const payload = localStorage.players ? JSON.parse(localStorage.players) : [];
+  
+  return {
+    type: LOAD_PLAYERS,
+    payload
   };
 }
 
