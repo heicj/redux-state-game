@@ -5,9 +5,9 @@ export default class PlayerList extends Component {
   render() {
     const { players } = this.props;
     return (
-      <ul>
-        {players && players.map(p => <li key={p.name} value={p.name}>{p.name}</li>)}
-      </ul>
+      <select>
+        {players && players.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
+      </select>
     );
   }
 }

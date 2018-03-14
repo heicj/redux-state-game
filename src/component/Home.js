@@ -10,12 +10,26 @@ class Home extends Component{
     this.props.loadPlayers();  
   }
 
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.onSubmit({ ...this.state });
+    this.setState({ name: '' });
+  };
+  
   render(){
     const { addPlayer, players } = this.props;
     return (
       <div>
-        <PlayerList players={players}/>
-        <AddPlayerForm onSubmit={addPlayer}/>
+        <form>
+          <label htmlFor="player1">Select Player 1</label>
+          <PlayerList id="player1" name="player1" players={players}/>
+          
+          <label htmlFor="player2">Select Player 2</label>
+          <PlayerList id="player2" name="player2" players={players}/>
+
+          <AddPlayerForm onSubmit={addPlayer}/>
+          <button type="submit">Start Game</button>
+        </form>
       </div>
     );
   }

@@ -1,4 +1,5 @@
-import { game, players, ADD_WINNER, ADD_PLAYER, CHOICE_ADD, WIN_GAME, NEW_GAME, LOAD_PLAYERS } from './reducers';
+import { game, players, ADD_WINNER, ADD_PLAYER, CHOICE_ADD, WIN_GAME, NEW_GAME, LOAD_PLAYERS, ASSIGN_PLAYER1, ASSIGN_PLAYER2
+} from './reducers';
 
 describe('reducer test', () => {
 
@@ -44,6 +45,11 @@ describe('reducer test', () => {
   it('should load players from local storage', () => {
     const state = players(undefined, { type: LOAD_PLAYERS, payload: ['M', 'J', 'C'] });
     expect(state.players).toEqual(['M', 'J', 'C']);
+  });
+
+  it('assign name to X', () => {
+    const state = game(undefined, { type: ASSIGN_PLAYER1, payload: 'M' });
+    expect(state.X).toEqual({ player1: 'M' }); 
   });
 
   
