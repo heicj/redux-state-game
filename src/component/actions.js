@@ -1,4 +1,9 @@
 import { CHOICE_ADD, WIN_GAME, NEW_GAME, ADD_PLAYER, LOAD_PLAYERS } from './reducers';
+import { db } from '../services/firebase';
+
+const gamesRef = db.ref('games');
+const playersNode = db.ref('players');
+
 
 export function playerChoice(id){
   return (dispatch, getState) => {
@@ -23,6 +28,7 @@ export function playerChoice(id){
 }
 
 export function addPlayer(name){
+  playersNode.push(name);
   return {
     type: ADD_PLAYER,
     payload: name
@@ -30,11 +36,21 @@ export function addPlayer(name){
 }
 
 export function loadPlayers() {
-  const payload = localStorage.players ? JSON.parse(localStorage.players) : [];
+  //const payload = playersNode ? playersNode : [];
   
   return {
     type: LOAD_PLAYERS,
-    payload
+    payload: playersNode.once('value').then(data => {
+      const players = data.val();
+
+      if(!players) return [];
+
+      return Object.keys(players).map(key => {
+        const player = players[key];
+        player.key = key;
+        return player;
+      });
+    })
   };
 }
 

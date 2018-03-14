@@ -1,6 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { game, players } from './component/reducers';
+import { db } from './services/firebase';
+
+const playersNode = db.ref('players');
 
 
 const reducer = combineReducers({
@@ -17,9 +20,10 @@ const store = createStore(
   )
 );
 
-window.onbeforeunload = () => {
-  const { players } = store.getState().players;
-  window.localStorage.players = JSON.stringify(players);
-};
+// window.onbeforeunload = () => {
+//   const { players } = store.getState().players;
+  
+//   playersNode.push(players);
+// };
 
 export default store;
