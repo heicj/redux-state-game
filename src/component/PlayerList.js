@@ -6,7 +6,7 @@ export default class PlayerList extends Component {
     const { players } = this.props;
     return (
       <ul>
-        {/* {players && players.map(p => <li key={p.name} value={p.name}>{p.name}</li>)} */}
+        {players && players.map(p => <li key={p.name} value={p.name}>{p.name}</li>)}
       </ul>
     );
   }
