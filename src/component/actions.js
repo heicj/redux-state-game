@@ -36,7 +36,14 @@ export function addPlayer(name){
 }
 
 export function assignPlayers(player1, player2) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const player1id = getState().players.players.find(element => { 
+      return element.name === player1; 
+    }).key;
+    const player2id = getState().players.players.find(element => { 
+      return element.name === player2; 
+    }).key;
+    console.log('player 1 id:', player1id, 'player2 id:', player2id);
     dispatch({
       type: ASSIGN_PLAYER1,
       payload: player1
@@ -47,6 +54,7 @@ export function assignPlayers(player1, player2) {
     });
   };
 }
+
 export function loadPlayers() {
   //const payload = playersNode ? playersNode : [];
   

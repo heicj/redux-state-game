@@ -21,6 +21,7 @@ class Home extends Component{
     const player1 = event.target.elements[0].value;
     const player2 = event.target.elements[1].value;
     this.props.assignPlayers(player1, player2);
+    this.props.history.push('/game');
   };
   
   render(){

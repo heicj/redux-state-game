@@ -58,6 +58,10 @@ export function game(state = initialState, { type, payload }){
       return {
         ...initialState
       };
+    // case ADD_WIN:
+    //   return {
+    //     .
+    //   }
     default:
       return state;
   }
