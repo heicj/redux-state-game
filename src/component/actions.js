@@ -23,6 +23,9 @@ export function playerChoice(id){
         type: WIN_GAME,
         payload: winner
       });
+      const winnerKey = getState().game[winner].key;
+      console.log(winnerKey);
+      playersNode.child(winnerKey).child('wins').push(1);
     }
   };
 }
@@ -43,14 +46,14 @@ export function assignPlayers(player1, player2) {
     const player2id = getState().players.players.find(element => { 
       return element.name === player2; 
     }).key;
-    console.log('player 1 id:', player1id, 'player2 id:', player2id);
+    // console.log('player 1 id:', player1id, 'player2 id:', player2id);
     dispatch({
       type: ASSIGN_PLAYER1,
-      payload: player1
+      payload: { player1, player1id }
     });
     dispatch({
       type: ASSIGN_PLAYER2,
-      payload: player2
+      payload: { player2, player2id }
     });
   };
 }
