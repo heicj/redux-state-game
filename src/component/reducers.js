@@ -52,7 +52,7 @@ export function game(state = initialState, { type, payload }){
     case ASSIGN_PLAYER2:
       return {
         ...state,
-        O : { ...state, payload }
+        O : { player2: payload }
       };
     case NEW_GAME:
       return {

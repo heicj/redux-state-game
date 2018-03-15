@@ -51,8 +51,4 @@ describe('reducer test', () => {
     const state = game(undefined, { type: ASSIGN_PLAYER1, payload: 'M' });
     expect(state.X).toEqual({ player1: 'M' }); 
   });
-
-  
-
-
 });

@@ -1,4 +1,4 @@
-import { CHOICE_ADD, WIN_GAME, NEW_GAME, ADD_PLAYER, LOAD_PLAYERS } from './reducers';
+import { CHOICE_ADD, WIN_GAME, NEW_GAME, ADD_PLAYER, LOAD_PLAYERS, ASSIGN_PLAYER1, ASSIGN_PLAYER2 } from './reducers';
 import { db } from '../services/firebase';
 
 const gamesRef = db.ref('games');
@@ -35,6 +35,18 @@ export function addPlayer(name){
   };
 }
 
+export function assignPlayers(player1, player2) {
+  return (dispatch) => {
+    dispatch({
+      type: ASSIGN_PLAYER1,
+      payload: player1
+    });
+    dispatch({
+      type: ASSIGN_PLAYER2,
+      payload: player2
+    });
+  };
+}
 export function loadPlayers() {
   //const payload = playersNode ? playersNode : [];
   
